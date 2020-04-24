@@ -1,0 +1,47 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+</head>
+<body>
+    <div>
+        <h1>
+            Nuevo Producto
+        </h1>
+        <h2><a href="/Producto/Index">Regresar a la lista</a></h2>
+
+        <form action="/Producto/Create" method="post">
+            <div>
+                <h4>Producto</h4>
+                <hr />
+
+                <label for="Codigo">Codigo</label><br />
+                <input name="Codigo" type="number" value="" required />
+                <br /><br />
+
+                <label for="Nombre">Nombre</label><br />
+                <input name="Nombre" type="text" value="" />
+                <br /><br />
+
+                <label for="Descripcion">Descripcion</label><br />
+                <input name="Descripcion" type="text" value="" />
+                <br /><br />
+
+                <div>
+                    <div>
+                        <input type="submit" value="Guardar" /> <a href="/Producto/Index">Ir a la lista</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</body>
+</html>
