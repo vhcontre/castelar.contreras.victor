@@ -8,14 +8,20 @@ namespace HTML.WebSite.Controllers
 {
     public class HomeController : Controller
     {
-        // GET: Home
         public ActionResult Index()
         {
             return View();
         }
-
-        public ActionResult AcercaDe()
+        public ActionResult About()
         {
+            ViewBag.Message = "La página de descripción de su aplicación.";
+            return View();
+        }
+
+
+        public ActionResult Contact()
+        {
+            ViewBag.Message = "Su página de contacto.";
             return View();
         }
     }
