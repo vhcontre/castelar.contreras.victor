@@ -4,12 +4,15 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - UAI</title>
+    <link href="~/Content/site.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <div id="container">
         <!-- Cabecera -->
         <header>
-            <img class="logo" src="/content/img/logo.gif" alt="Logo de la Institución" />
+            <a  href="/" title="Principal">
+                <img class="logo" src="/content/img/logo.gif" alt="Logo de la Institución" />
+            </a>
             <nav>
                 <ul>
                     <li><a href="/">Principal</a> </li>
@@ -31,7 +34,12 @@
                 <div>
                     <h3>Sidebar</h3>
                     <div>
-                        
+                        <ul>
+                            <li><a href="/">Principal</a> </li>
+                            <li><a href="/Home/Contact">Contacto</a> </li>
+                            <li><a href="/Home/About">Acerca de</a> </li>
+                        </ul>
+
                     </div>
                 </div>
             </article>
@@ -40,6 +48,8 @@
         <!-- Pie de pagina -->
         <footer>
             <p>&copy; @DateTime.Now.Year - Universidad Abierta Interamericana</p>
+
+            
         </footer>
     </div>
     @RenderSection("scripts", required: false)

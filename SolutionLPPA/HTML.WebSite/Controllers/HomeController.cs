@@ -17,8 +17,7 @@ namespace HTML.WebSite.Controllers
             ViewBag.Message = "La página de descripción de su aplicación.";
             return View();
         }
-
-
+        
         public ActionResult Contact()
         {
             ViewBag.Message = "Su página de contacto.";

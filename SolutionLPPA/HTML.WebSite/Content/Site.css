@@ -1,2 +1,105 @@
 ﻿/*IMPORTANTE - No modificar estos estilos, ya que son imprescindibles para que la pagina se vea correctamente.*/
 /*https://developer.mozilla.org/es/docs/Web/CSS/overflow*/
+
+/*elementos basicos*/
+
+html, body {
+    height: 100%;
+}
+
+h1, h2, h3, p {
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    border: none;
+}
+
+p {
+    text-align: justify;
+}
+
+/*maqueta - layout*/
+
+#container {
+    width: 960px;
+    margin: 0 auto;
+}
+
+header {
+    display: block;
+    background-color: #6793ec;
+    padding: 5px 0px;
+    margin-bottom:5px;
+   
+}
+
+/*menu horizontal*/
+
+nav ul {
+    margin: 0;
+    padding: 0;
+}
+
+    nav ul li {
+        list-style: none;
+        display: inline;
+    }
+
+        nav ul li a {
+            text-decoration: none;
+            background-color: powderblue;
+            padding: 5px;
+            margin-left: 5px;
+            border-radius: 5px;
+        }
+
+.logo {
+    width: 150px;
+    height: 40px;
+    margin-left: 5px;
+    margin-bottom: 5px;
+}
+
+section {
+    background-color: #fafafa;
+    overflow: auto;
+    float: right;
+    padding: 5px;
+    width: 79%;
+    min-height: 450px;
+}
+
+aside {
+    float: left;
+    width: 19%;
+    background-color: #fafafa;
+}
+
+footer {
+    position: relative;
+    float: none;
+    clear: both;
+    background-color: #6793ec;
+    height: 40px;
+    padding: 5px 0;
+}
+
+    footer p {
+        color: #fff;
+        text-align: center;
+    }
+
+span {
+    color: #060;
+}
+
+strong {
+    font-size: 20px;
+}
+
+em {
+    color: #FFF;
+    background-color: #57a9b3;
+}
