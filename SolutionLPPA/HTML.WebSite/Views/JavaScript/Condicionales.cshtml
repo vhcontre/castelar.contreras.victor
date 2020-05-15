@@ -1,0 +1,67 @@
+﻿
+@{
+    ViewBag.Title = "Condicionales";
+}
+
+<h2>Condicionales</h2>
+
+<span>Condicional IF</span>
+<br />
+<input type="button" value="fnIfElse" onclick="fnIfElse()" />
+<br />
+<input type="button" value="fnWhile" onclick="fnWhile()" />
+<br />
+<button id="btnSwitch">switch</button>
+<br />
+<hr />
+<span id="spDatos">value span</span>
+
+@section scripts
+{
+
+    <script>
+
+        $("#btnSwitch").click(function () {
+            var x = parseInt(window.prompt("ingrese valor de x:", 0));
+            var ctlSpan = document.getElementById("spDatos");
+            //var ctlSpan = $("#spDatos");
+            switch (x) {
+                case 1:
+                    ctlSpan.innerHTML = "El valor de x ingresado fue: " + x;
+                    break;
+                default:
+                    ctlSpan.innerHTML = "default::El valor de x ingresado fue: " + x;
+                    break;
+            }
+
+            
+        });
+
+        function fnIfElse() {
+            var ctlSpan = document.getElementById("spDatos");
+
+            var x = parseInt(window.prompt("ingrese valor de x:", 0));
+
+            if (x === 0) {
+                ctlSpan.innerHTML = "El valor de x ingresado fue 0";
+            }
+            else {
+                ctlSpan.innerHTML = "El valor de x ingresado fue: " + x;
+            }
+        }
+
+        function fnWhile() {
+            var ctlSpan = document.getElementById("spDatos");
+
+            var j = 5;
+            var x = parseInt(window.prompt("ingrese valor de x:", 0));
+
+            while (x < j) {
+
+                ctlSpan.innerHTML = x;
+                console.log(x);
+                x++;
+            }
+        }
+    </script>
+}

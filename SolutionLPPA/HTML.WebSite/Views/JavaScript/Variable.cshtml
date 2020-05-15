@@ -1,0 +1,105 @@
+﻿
+@{
+    ViewBag.Title = "Variable";
+}
+
+<style>
+    .myButton {
+        background-color: #44c767;
+        border-radius: 28px;
+        border: 1px solid #18ab29;
+        display: inline-block;
+        cursor: pointer;
+        color: #ffffff;
+        font-family: Arial;
+        font-size: 17px;
+        padding: 16px 31px;
+        text-decoration: none;
+        text-shadow: 0px 1px 0px #2f6627;
+    }
+
+        .myButton:hover {
+            background-color: #5cbf2a;
+        }
+
+        .myButton:active {
+            position: relative;
+            top: 1px;
+        }
+</style>
+<h2>Trabajar con variable en JS</h2>
+
+<input type="button" value="fnMessage" onclick="fnMessage('Sede Castelar - Calificaciones parameters')" />
+<br />
+<input type="button" value="fnMessage2" onclick="fnMessage2()" />
+<br />
+<br />
+@*<a href="javascript:fnVectores()" class="myButton"> fnVectores</a>*@
+<a href="javascript:void(0);" onclick="fnVectores();" class="myButton">fnVectores</a>
+
+<input type="button" value="fnGetObject" onclick="fnGetObject()" class="myButton" />
+<br />
+<hr />
+
+
+<span id="spDatos" >value span</span>
+
+
+@section scripts
+{
+    <script>
+
+        var gMessage = ("Sede Castelar - Calificaciones");
+        
+        
+        //console.log("Sede Castelar - Calificaciones");
+        function fnMessage(msg) {
+            var ctlSpan = document.getElementById("spDatos");
+            ctlSpan.innerHTML = msg;
+            console.log(msg);
+        }
+
+        function fnMessage2() {
+            var myFunction = function (msg) {
+                console.log(msg)
+            };
+            myFunction(gMessage);
+        }
+
+        function fnVectores() {
+            var numberList = [0, 1, 2, 3, 4, 5];
+            console.log(numberList[3]);
+        }
+
+        function fnGetObject() {
+            var obj = { firstName: "Java", lastName: "Script" };
+            console.log(obj.firstName + "-" + obj.lastName);
+
+
+            console.log("ver el tipo variable -propiedad");
+            console.log(typeof (obj.firstName));
+
+            console.log("ver el tipo variable obj");
+            obj = null;
+            //console.log(obj.firstName + "-" + obj.lastName);
+            console.log(typeof (obj));
+
+            console.log("ver el tipo variable isValid");
+            var isValid = true;
+            console.log(typeof (isValid));
+
+            console.log("ver el tipo variable other");
+            var other;
+            console.log(typeof (other));
+
+
+            console.log("ver el tipo variable num");
+            var num = 123;
+            console.log(typeof (num));
+
+
+
+        }
+
+    </script>
+}

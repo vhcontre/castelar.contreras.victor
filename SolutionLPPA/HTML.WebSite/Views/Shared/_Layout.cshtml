@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - UAI</title>
     <link href="~/Content/site.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/jquery-2.2.4.min.js"></script>
 </head>
 <body>
     <div id="container">
         <!-- Cabecera -->
         <header>
-            <a  href="/" title="Principal">
+            <a href="/" title="Principal">
                 <img class="logo" src="/content/img/logo.gif" alt="Logo de la Institución" />
             </a>
             <nav>
@@ -32,26 +33,25 @@
         <aside id="pub">
             <article>
                 <div>
-                    <h3>Sidebar</h3>
+                    <h3>JavaScript</h3>
                     <div>
                         <ul>
-                            <li><a href="/">Principal</a> </li>
-                            <li><a href="/Home/Contact">Contacto</a> </li>
-                            <li><a href="/Home/About">Acerca de</a> </li>
+                            <li><a href="/JavaScript/Index">Principal</a> </li>
+                            <li><a href="/JavaScript/Variable/">Variables</a> </li>
+                            <li><a href="/JavaScript/Index">Operadores</a> </li>
+                            <li><a href="/JavaScript/Condicionales">Condicionales</a> </li>
+                            <li><a href="/JavaScript/Index">Funciones</a> </li>
                         </ul>
-
                     </div>
                 </div>
             </article>
-
         </aside>
         <!-- Pie de pagina -->
         <footer>
             <p>&copy; @DateTime.Now.Year - Universidad Abierta Interamericana</p>
-
-            
         </footer>
     </div>
     @RenderSection("scripts", required: false)
+
 </body>
 </html>
