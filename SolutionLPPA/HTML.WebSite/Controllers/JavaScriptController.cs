@@ -24,5 +24,15 @@ namespace HTML.WebSite.Controllers
         {
             return View();
         }
+
+        public ActionResult Demo()
+        {
+            return View();
+        }
+
+        public ActionResult AltaProducto()
+        {
+            return View();
+        }
     }
 }

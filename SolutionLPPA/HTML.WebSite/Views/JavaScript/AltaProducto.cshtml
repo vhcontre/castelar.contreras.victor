@@ -1,0 +1,85 @@
+﻿
+@{
+    ViewBag.Title = "AltaProducto";
+}
+
+<h2>Alta de Productos</h2>
+
+<div>
+    <table>
+        <tr>
+            <th>
+                Código
+            </th>
+            <td>
+                <input id="txtCodigo" type="number" placeholder="Ingrese codigo producto" />
+            </td>
+        </tr>
+        <tr>
+            <th>Nombre</th>
+            <td> <input id="txtNombre" type="text" /> </td>
+        </tr>
+        <tr>
+            <th></th>
+            <td> <input  type="checkbox" /> </td>
+        </tr>
+        <tr>
+            <th></th>
+            <td>
+                <input type="button" value="Grabar" id="btnSave" class="myButton" />
+                <input type="button" value="Listar" id="btnToList" class="myButton" />
+            </td>
+        </tr>
+    </table>
+
+    <p>
+        <h3>Listado de productos</h3>
+    </p>
+    <div id="divBody">No hay registros</div>
+</div>
+
+@section scripts
+{
+
+    <script>
+
+        var productos = new Array();
+
+        function Producto() {
+            this.setCodigo = function (value) { this._codigo = value; }
+            this.getCodigo = function () { return this._codigo };
+
+            this.setNombre = function (value) { this._nombre = value; }
+            this.getNombre = function () { return this._nombre };
+        }
+
+        $("#btnSave").click(function () {
+
+            if ($("#txtCodigo").val() == "")
+                alert("Debe ingresar un código");
+
+            let producto = new Producto();
+            producto.setCodigo(document.getElementById("txtCodigo").value);
+            producto.setNombre($("#txtNombre").val());
+            productos.push(producto);
+
+            $("#txtCodigo").val("");
+            $("#txtNombre").val("");
+
+        });
+
+        $("#btnToList").click(function () {
+
+            var elem = $("#divBody");
+            elem.html("");
+
+            $.each(productos, function (i, e) {
+                elem.append("<span>" + e.getCodigo() + " - " + e.getNombre() + "</span> <br />")
+            });
+            
+        });
+       
+    </script>
+
+}
+

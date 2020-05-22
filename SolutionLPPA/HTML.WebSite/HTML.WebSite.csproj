@@ -91,10 +91,16 @@
     <Content Include="Content\img\logo.gif" />
     <Content Include="Content\site.css" />
     <Content Include="Global.asax" />
+    <None Include="bundleconfig.json" />
     <None Include="Scripts\jquery-2.2.4.intellisense.js" />
+    <Content Include="Scripts\demo.js" />
     <Content Include="Scripts\jquery-2.2.4.js" />
     <Content Include="Scripts\jquery-2.2.4.min.js" />
     <Content Include="Scripts\MyLib.js" />
+    <Content Include="Scripts\utils.js" />
+    <Content Include="Scripts\utils.min.js">
+      <DependentUpon>utils.js</DependentUpon>
+    </Content>
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -124,6 +130,8 @@
     <Content Include="Views\JavaScript\Index.cshtml" />
     <Content Include="Views\JavaScript\Variable.cshtml" />
     <Content Include="Views\JavaScript\Condicionales.cshtml" />
+    <Content Include="Views\JavaScript\Demo.cshtml" />
+    <Content Include="Views\JavaScript\AltaProducto.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
