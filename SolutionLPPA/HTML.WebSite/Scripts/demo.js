@@ -1,107 +1,156 @@
 ﻿'use strict';
 (function () {
 
-    // Agregar funciones a objetos
-    let person = {
-        firstName: "Juan",
-        lastName: "Garcia"
+    // ¿Qué es un prototipo?
+    let myFunction = function () { };
+    // display(myFunction.prototype);
+
+    let person = { firstName: 'Juan' };
+    //display(person.prototype);
+    // display(person.__proto__);
+
+    function Person(firstName, lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
-    person.age = 15;
-    person.isAdult = function () { return this.age >= 18; };
-    // display(person);
+    Person.prototype.age = 40;
+
+    // display(Person.prototype);
+    let juan = new Person('Juan', 'Garcia');
+    let luis = new Person('Luis', 'Garcia');
+    luis.__proto__.age = 50;
+    //display(juan.__proto__); 
+    //display(luis.__proto__);
+    //display(Person.prototype === juan.__proto__);
 })();
 
 (function () {
 
-    //  Objeto Literal - Propiedad abreviada
-    function registerUser(firstName, lastName) {
-        let person = {
-            firstName,
-            lastName
-        };
-        ///display(person);
+    // Instancia - propiedades del prototipo
+    function Person(firstName, lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
-    registerUser('Juan', 'Garcia');
-})();
+    Person.prototype.age = 40;
 
-(function () {
-
-    // Declaracion Metodo literal - Declaracion de metodo abreviado
-    // isAdult: function () { return this.age >=18 }
-    let person = {
-        firstName: "Juan",
-        lastName: "Garcia",
-        age: 10,
-        isAdult() { return this.age >= 18 },
-    }
-    // display(person);
-})();
-
-(function () {
-    // Inspección de propiedades. Object.Keys | for
-    let person = {
-        firstName: "Juan",
-        lastName: "Garcia",
-        age: 10,
-        isAdult() { return this.age >= 18 },
-    }
-
-    // display(Object.keys(person));
-    for (let propName in person) {
-        // display(propName);
-    }
-})();
-
-// Powerpoint
-
-(function () {
-
-    // *** Asignación de Objetos y Inmutabilidad   
-    let person = {
-        firstName: "Juan",
-        lastName: "Perez",
-        age: 10,
-        isAdult() { return this.age >= 18 },
-    }
-    //let person2 = {};
-    //Object.assign(person2, person);
-    //display(person2);
-
-    let healthStats = {
-        heigth: 125,
-        weigth: 80
-    }
-    //Object.assign(person, healthStats);
-    //display(person);
-
-    function mergeHealthStats(person, healthStats) {
-        return Object.assign({}, person, healthStats);
-    }
-
-    let mergedPerson = mergeHealthStats(person, healthStats);
-    //display(person);
-    //display(mergedPerson);
+    let juan = new Person('Juan', 'Garcia');
+    let luis = new Person('Luis', 'Garcia');
+    juan.age = 35;
+    //display(juan.age);
+    //display(juan.__proto__.age);
+    //display(luis.hasOwnProperty('age'));
+    //display(luis.age);
 
 })();
 
 (function () {
 
-    // *** Uso de funciones con constructores para crear objetos
+    // cambiando a funciones de prototipos
+    function Person(firstName, lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+    Person.prototype.age = 18;
 
-    function Person(firstName, lastName, age) {
+    let juan = new Person('Juan', 'Garcia');
+    let luis = new Person('Luis', 'Garcia');
+
+    Person.prototype = { age: 32 };
+    // luis.__proto__.age = 32;
+    let cris = new Person('Cristina', 'Garcia');
+    let pedro = new Person('Pedro', 'Garcia');
+
+    //display(Person.prototype);
+    //display(juan.age);
+    //display(luis.age);
+    //display(cris.age);
+    //display(pedro.age);    
+
+})();
+
+(function () {
+
+    // Niveles de Herencia.
+    function Person(firstName, lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+    Person.prototype.age = 18;
+    let juan = new Person('Juan', 'Garcia');
+    //display(juan.__proto__);
+    //display(juan.__proto__.__proto__);
+    //display(juan.__proto__.__proto__.__proto__);
+
+})();
+
+(function () {
+
+    // Crera mi propio objeto.
+    function Person(firstName, lastName,age) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
-        this.isAdult = function () { return this.age >= 21 };
-    }
 
-    let juan = new Person('Juan', 'Garcia', 10);
-    let claudia = new Person('Claudia', 'Garcia', 15);
+        //this.fullName = function () {
+        //    return this.firstName + ' ' + this.lastName;
+        //};
+        Object.defineProperty(this, 'fullName', {
+            get: function () {
+               return this.firstName + ' ' + this.lastName
+            }, enumerable:true
+        });
+    };
 
-    display(juan);
-    display(claudia);
+    function Student(firstName, lastName, age) {
 
-    display(juan.isAdult());
-    display(claudia.isAdult());
+        Person.call(this,firstName,lastName,age);
+        this._courses = [];
+        this.enroll = function (id) {
+            this._courses.push(id);
+        };
+        this.getCourses = function () {
+            return this.fullName +  ': está inscripto en los cursos ' + this._courses.join(', ')
+        };
+    };
+
+    Student.prototype = Object.create(Person.prototype);
+    Student.prototype.constructor = Student;
+
+    let juan = new Student('Juan', 'Garcia', 40)
+
+    //display(juan);
+    //display(juan.__proto__);
+    //display(juan.__proto__.__proto__);
+    //display(juan.__proto__.__proto__.__proto__);
+    //juan.enroll('HTML100');
+    //juan.enroll('CSS100');
+    //juan.enroll('JS100');
+
+    // display(juan.getCourses());
+
+
 
 })();
+
+(function () {
+
+    // Crear objetos con clases
+    class Person {
+        constructor(firstName, lastName, age) {
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.age = age;
+        }
+    }
+
+    class Student extends Person {
+        constructor(firstName, lastName, age) {
+            super(firstName, lastName, age);
+        }
+    };
+
+    let juan = new Student('Juan', 'Garcia', 45);
+    display(juan);
+
+})();
+
